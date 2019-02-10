@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.login-page{
+    width: 56vw;
+    padding: 10vw ;
+    margin: 1vw 17vw;
+}
+.form{
+    position: relative;
+    z-index: 1;
+    background: rgba(41, 89, 109, 0.8);
+    max-width: 560px;
+    padding: 45px;
+    text-align: center;
+}
+.form input{
+    font-family: 'Courier New', Courier, monospace;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+.form .btn{
+    font-family: 'Courier New', Courier, monospace;
+    outline: 1;
+    background: #070707;
+    width:100%;
+    padding: 15PX;
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+}   
+.registered .btn:hover,.login-form .btn:hover{
+    background: rgb(20, 20, 20);
+}
+.login-form .msg,.form .msg{
+    margin: 15px 0 0;
+    color: aliceblue;
+    font-size: 12px;
+}
+.login-form .msg a,.form .msg a{
+    color: #030303;
+    text-decoration: none;
+}
+.form .register-form{
+    display: none;
+}

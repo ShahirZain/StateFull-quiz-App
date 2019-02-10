@@ -1,0 +1,27 @@
+.box{
+    width: 29vw;
+    padding: 5vw ;
+    margin: 10vw 35vw;  
+}
+.txt,.Button{
+    height: 40px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+}
+.txt{
+    width: 200px;
+    border: 1px solid gray;
+}
+.Button{
+    width: 70px;
+    cursor: grab;
+    margin-left: 8px;
+}
+a{
+    text-decoration: none;
+}
+p{
+    
+    font-family: 'Noto Serif SC', serif;
+}
