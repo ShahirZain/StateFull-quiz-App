@@ -1,7 +1,5 @@
 import React, { Component } from "react";
- import MCQs from "./mcq";
-/*import coverPic1 from "../../images/quiz.jpg";
-import coverPic2 from "../../images/test.png"; */
+import MCQs from "./mcq";
 
 class QuizList extends Component {
   constructor() {
@@ -10,7 +8,7 @@ class QuizList extends Component {
       quiz_list: [
         { quizName: "HTML", tests: 2 }
       ],
-      quiz_info: [
+      quizInfo: [
         {
           quizName: "HTML",
           tests: [
@@ -157,22 +155,21 @@ class QuizList extends Component {
               ]
             }
           ]
-        }      
+        }
       ],
-      saveSelectedQuizObj: null,
+      saveSelectedQuiz: null,
       renderSelectedTestObj: false,
       renderMCQs: false,
       currentTestIndex: null
     };
     this.back = this.back.bind(this);
-    this.backToDashboard = this.backToDashboard.bind(this);
+    this.QuizList = this.QuizList.bind(this);
   }
 
-  // saving selected quiz to state
-  updateQuizInfoState(index) {
-    const { quiz_info } = this.state;
+  quizInfo(index) {
+    const { quizInfo } = this.state;
     this.setState({
-      saveSelectedQuizObj: quiz_info[index],
+      saveSelectedQuiz: quizInfo[index],
       renderSelectedTestObj: true
     });
   }
@@ -182,22 +179,22 @@ class QuizList extends Component {
     this.setState({ renderSelectedTestObj: false });
   }
 
-  backToDashboard(param) {
+  QuizList(param) {
     this.setState({ renderMCQs: param });
   }
 
   renderQuizInfo() {
-    const { saveSelectedQuizObj } = this.state;
+    const { saveSelectedQuiz } = this.state;
     return (
       <div>
-        <h2>{saveSelectedQuizObj.quizName} Quiz</h2>
+        <h2>{saveSelectedQuiz.quizName} Quiz</h2>
 
         <div className="row">
-          {saveSelectedQuizObj.tests.map((test, i) => {
+          {saveSelectedQuiz.tests.map((test, i) => {
             return (
               <div
                 className="col-md-4"
-                key={`${saveSelectedQuizObj.quizName}_${test.name}`}
+                key={`${saveSelectedQuiz.quizName}_${test.name}`}
               >
                 <div className="card" style={{ width: "18rem" }}>
                   <div className="card-body">
@@ -251,7 +248,7 @@ class QuizList extends Component {
                     </p>
                     <button
                       className="btn btn-info"
-                      onClick={this.updateQuizInfoState.bind(this, index)}
+                      onClick={()=>this.quizInfo(index)}
                     >
                       Next <i className=" fa fa-paper-plane" />
                     </button>
@@ -270,7 +267,7 @@ class QuizList extends Component {
     const {
       renderSelectedTestObj,
       renderMCQs,
-      saveSelectedQuizObj,
+      saveSelectedQuiz,
       currentTestIndex
     } = this.state;
     return (
@@ -279,14 +276,14 @@ class QuizList extends Component {
           this.renderQuizInfo()
         ) : renderMCQs ? (
           <MCQs
-            currentQuesObj={saveSelectedQuizObj}
+            currentQuesObj={saveSelectedQuiz}
             currentTestIndex={currentTestIndex}
-            backToDashboard={this.backToDashboard}
+            backToDashboard={this.QuizList}
           />
         ) : (
-          this.renderQuizList()
-        )}
-        {console.log("abcd",currentTestIndex, saveSelectedQuizObj, renderMCQs)}
+              this.renderQuizList()
+            )}
+        {console.log("abcd", currentTestIndex, saveSelectedQuiz, renderMCQs)}
       </div>
     );
   }
